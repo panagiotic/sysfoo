@@ -45,7 +45,7 @@ pipeline {
       agent any
       steps {
         script {
-          docker.withRegistry('https://index.docker.io/v1/', 'fbb9668a-1edf-462f-9807-fbb0e6b82144') {
+          docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
             def dockerImage = docker.build("panagiotic/sysfoo:v${env.BUILD_ID}", "./")
             dockerImage.push()
             dockerImage.push("latest")
